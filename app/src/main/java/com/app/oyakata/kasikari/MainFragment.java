@@ -150,8 +150,6 @@ public class MainFragment extends Fragment {
         MyDBHelper helper = new MyDBHelper(getContext());
         SQLiteDatabase db = helper.getWritableDatabase();
 
-        SQLiteDatabase.deleteDatabase(getContext().getDatabasePath(helper.getDatabaseName()));
-
         Cursor cursor = db.rawQuery(SELECT_DEBT_SUM, null);
         try {
             while (cursor.moveToNext()) {
