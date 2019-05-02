@@ -182,7 +182,8 @@ public class DetailFragment extends Fragment {
                 int otakuId = cursor.getInt(cursor.getColumnIndex("_id"));
                 String twitterId = cursor.getString(cursor.getColumnIndex("twitterid"));
                 String otakuName = cursor.getString(cursor.getColumnIndex("name"));
-                cards.add(new Card(otakuId, twitterId, otakuName, "", ""));
+                String debtDetail = "(タップして編集)";
+                cards.add(new Card(otakuId, twitterId, otakuName, "", debtDetail));
             }
         } finally {
             cursor.close();
