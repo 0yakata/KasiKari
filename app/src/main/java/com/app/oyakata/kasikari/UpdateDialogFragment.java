@@ -62,8 +62,8 @@ public class UpdateDialogFragment extends DialogFragment {
                 String text1 = editText1.getText().toString();
                 String text2 = editText2.getText().toString();
 
-                //両方埋まってる場合のみ処理
-                if(!text1.isEmpty() && !text2.isEmpty()) {
+                //1つ目のテキストボックスは必須
+                if(!text1.isEmpty()) {
                     MyDBHelper helper = new MyDBHelper(getContext());
                     SQLiteDatabase db = helper.getWritableDatabase();
                     db.beginTransaction();
