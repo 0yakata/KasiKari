@@ -64,8 +64,7 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_detail, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_detail, container, false);
     }
 
     @Override
@@ -219,15 +218,15 @@ public class DetailFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
 
         // リプライ先
-        sb.append("@" + cards.get(0).getTwitterId() + "\r\n");
+        sb.append("@").append(cards.get(0).getTwitterId()).append("\r\n");
 
         for (Debt d : debts) {
             if(!d.getDoneFlgBool()){
                 String yen = convertYen2k(d.getYen(),kFlg);
-                sb.append(yen + " " + d.getMemo() + "\r\n");
+                sb.append(yen).append(" ").append(d.getMemo()).append("\r\n");
             }
         }
-
+        sb.append("#KasiKari");
         return sb.toString();
     }
 }

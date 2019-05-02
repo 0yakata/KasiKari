@@ -5,10 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -26,7 +23,6 @@ import com.google.android.gms.ads.AdView;
 import java.util.ArrayList;
 import java.util.List;
 import static android.content.Context.MODE_PRIVATE;
-import static android.support.design.widget.Snackbar.LENGTH_LONG;
 import static com.app.oyakata.kasikari.Utility.convertYen2k;
 
 public class MainFragment extends Fragment {
@@ -54,14 +50,14 @@ public class MainFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     public void onViewCreated(View view, final Bundle savedInstanceState) {
         // 広告
         long adOpenedDate = getActivity().getSharedPreferences("pref", MODE_PRIVATE)
                                .getLong("adOpenedDate", 0);
+        // 前回起動日時 + 3日間 < 現在日時 ⇒ 広告表示
         if(adOpenedDate + 259200000 < System.currentTimeMillis()){
             adView = new AdView(getContext());
             adView.setAdSize(AdSize.BANNER);
@@ -150,8 +146,7 @@ public class MainFragment extends Fragment {
         MyDBHelper helper = new MyDBHelper(getContext());
         SQLiteDatabase db = helper.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery(SELECT_DEBT_SUM, null);
-        try {
+        try (Cursor cursor = db.rawQuery(SELECT_DEBT_SUM, null)) {
             while (cursor.moveToNext()) {
                 int otakuId = cursor.getInt(cursor.getColumnIndex("_id"));
                 String twitterId = cursor.getString(cursor.getColumnIndex("twitterid"));
@@ -162,8 +157,6 @@ public class MainFragment extends Fragment {
 
                 sum += cursor.getInt(cursor.getColumnIndex("yen"));
             }
-        } finally {
-            cursor.close();
         }
 
         // 総額設定
@@ -180,9 +173,11 @@ public class MainFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
         for (Card c : cards) {
             if (!c.getDebtSum().startsWith("0 ")) {
-                sb.append(c.getOtakuName() + " " + c.getDebtSum() + " " + c.getDebtDetail() + "\r\n");
+                sb.append(c.getOtakuName()).append(" ").append(c.getDebtSum()).append(" ")
+                        .append(c.getDebtDetail()).append("\r\n");
             }
         }
+        sb.append("#KasiKari");
         return sb.toString();
     }
 }

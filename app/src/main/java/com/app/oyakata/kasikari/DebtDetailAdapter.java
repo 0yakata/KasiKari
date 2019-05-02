@@ -2,7 +2,6 @@ package com.app.oyakata.kasikari;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +27,12 @@ public class DebtDetailAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private ArrayList<Debt> debtList;
 
-    public DebtDetailAdapter(Context context) {
+    DebtDetailAdapter(Context context) {
         this.context = context;
         this.layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setDebtList(ArrayList<Debt> debtList) {
+    void setDebtList(ArrayList<Debt> debtList) {
         this.debtList = debtList;
     }
 

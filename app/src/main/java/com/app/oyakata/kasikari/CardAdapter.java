@@ -1,7 +1,6 @@
 package com.app.oyakata.kasikari;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.squareup.picasso.Picasso;
 
@@ -58,37 +56,37 @@ public class CardAdapter extends ArrayAdapter<Card> {
     }
 
     private class ViewHolder {
-        private ImageView twitterIconImage = null;
-        private TextView otakuNameText = null;
-        private TextView twitterIdText = null;
-        private TextView debtSumText = null;
-        private TextView debtDetailText = null;
+        private ImageView twitterIconImage;
+        private TextView otakuNameText;
+        private TextView twitterIdText;
+        private TextView debtSumText;
+        private TextView debtDetailText;
 
-        public ViewHolder(View view) {
-            twitterIconImage = (ImageView)view.findViewById(R.id.twitterIconImage);
-            otakuNameText = (TextView) view.findViewById(R.id.otakuNameText);
-            twitterIdText = (TextView) view.findViewById(R.id.twitterIdText);
-            debtSumText = (TextView) view.findViewById(R.id.debtSumText);
-            debtDetailText = (TextView) view.findViewById(R.id.debtDetailText);
+        ViewHolder(View view) {
+            twitterIconImage = view.findViewById(R.id.twitterIconImage);
+            otakuNameText = view.findViewById(R.id.otakuNameText);
+            twitterIdText = view.findViewById(R.id.twitterIdText);
+            debtSumText = view.findViewById(R.id.debtSumText);
+            debtDetailText = view.findViewById(R.id.debtDetailText);
         }
 
-        public ImageView getTwitterIconImage() {
+        ImageView getTwitterIconImage() {
             return this.twitterIconImage;
         }
 
-        public TextView getOtakuNameText() {
+        TextView getOtakuNameText() {
             return this.otakuNameText;
         }
 
-        public TextView getTwitterIdText() {
+        TextView getTwitterIdText() {
             return this.twitterIdText;
         }
 
-        public TextView getDebtSumText() {
+        TextView getDebtSumText() {
             return this.debtSumText;
         }
 
-        public TextView getDebtDetailText() {
+        TextView getDebtDetailText() {
             return this.debtDetailText;
         }
     }
