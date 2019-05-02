@@ -7,29 +7,29 @@
         android:id="@+id/yen"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1.5"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:layout_weight="1.75"
         android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:paddingStart="?android:attr/listPreferredItemPaddingLeft"
         android:paddingEnd="?android:attr/listPreferredItemPaddingRight"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall" />
+        android:textAppearance="?android:attr/textAppearanceListItemSmall" />
 
     <TextView
         android:id="@+id/memo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:paddingStart="?android:attr/listPreferredItemPaddingLeft"
         android:paddingEnd="?android:attr/listPreferredItemPaddingRight"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall" />
+        android:textAppearance="?android:attr/textAppearanceListItemSmall" />
 
     <Switch
         android:id="@+id/done_switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.75"
         android:focusable="false" />
 
 </LinearLayout>
