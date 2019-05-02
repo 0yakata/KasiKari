@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KasiKari</string>
+    <!--<string name="ad_id">ca-app-pub-7465224301871178/9578637936</string>-->
+    <string name="ad_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
